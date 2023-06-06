@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from blog.models import Post, Likes
-from blog.form import CommentsForm
+from blog.form import CommentsForm, PostForm
 
 # Create your views here.
 
@@ -61,3 +61,7 @@ class DelLike(View):
             return redirect(f'/{pk}')
         except:
             return redirect(f'/{pk}')
+
+def PostNew(request):
+    form = PostForm
+    return render(request, 'blog/post-new.html', {'form': form})
